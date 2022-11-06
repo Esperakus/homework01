@@ -9,11 +9,6 @@
       state: latest
       update_cache: yes
 
-  - name: install python-firewalld
-    dnf:
-      name: python3-firewall
-      state: present
-
   - name: Install nginx
     dnf:
       name: nginx
@@ -25,11 +20,16 @@
       state: restarted
       enabled: yes
 
-  - name: enable http(s) in firewalld
+  - name: install python3-firewalld
+    dnf:
+      name: python3-firewalld
+      state: present
+
+  - name: firewalld enable http(s)
     firewalld:
       service:
         - http
         - https
-      permanent: yes
       state: enabled
+      permanent: yes
       immediate: yes

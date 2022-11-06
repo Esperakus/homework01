@@ -15,7 +15,8 @@ provider "yandex" {
 }
 
 resource "yandex_compute_instance" "nginx01" {
-  name = "nginx-server"
+  name     = "nginx-server"
+  hostname = "nginx-server"
 
   resources {
     cores  = 2
@@ -34,14 +35,14 @@ resource "yandex_compute_instance" "nginx01" {
   }
 
   metadata = {
-#    ssh-keys = "root:${file("~/.ssh/id_rsa.pub")}"
-    user-data = file("user-data.txt")
+    ssh-keys = "cloud-user:${file("~/.ssh/id_rsa.pub")}"
+#    user-data = "${file("user_data.txt")}"
   }
 
   connection {
     type        = "ssh"
-    user        = "web"
-    private_key = file("~/.ssh/id_rsa")
+    user        = "cloud-user"
+    private_key = "${file("~/.ssh/id_rsa")}"
     host        = yandex_compute_instance.nginx01.network_interface.0.nat_ip_address
   }
 
@@ -51,7 +52,7 @@ resource "yandex_compute_instance" "nginx01" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook -u web -i '${self.network_interface.0.nat_ip_address},' --private-key ~/.ssh/id_rsa nginx_centos.yml"
+    command = "ansible-playbook -u cloud-user -i '${self.network_interface.0.nat_ip_address},' --private-key ~/.ssh/id_rsa nginx-centos.yml"
   }
 }
 

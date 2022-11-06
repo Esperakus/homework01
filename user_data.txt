@@ -1,0 +1,7 @@
+users:
+  - name: web
+    groups: wheel
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ${file("~/.ssh/id_rsa.pub")}
