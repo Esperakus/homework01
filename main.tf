@@ -34,12 +34,13 @@ resource "yandex_compute_instance" "nginx01" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "root:${file("~/.ssh/id_rsa.pub")}"
+#    user-data = "${file("user-data.txt")}"
   }
 
   connection {
     type        = "ssh"
-    user        = "web"
+    user        = "root"
     private_key = file("~/.ssh/id_rsa")
     host        = yandex_compute_instance.nginx01.network_interface.0.nat_ip_address
   }
