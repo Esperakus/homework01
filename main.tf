@@ -29,7 +29,7 @@ resource "yandex_compute_instance" "nginx01" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet-1.id
+    subnet_id = yandex_vpc_subnet.subnet01.id
     nat       = true
   }
 
@@ -55,14 +55,14 @@ resource "yandex_compute_instance" "nginx01" {
   }
 }
 
-resource "yandex_vpc_network" "network-1" {
-  name = "network1"
+resource "yandex_vpc_network" "net01" {
+  name = "net01"
 }
 
-resource "yandex_vpc_subnet" "subnet-1" {
+resource "yandex_vpc_subnet" "subnet01" {
   name           = "subnet1"
   zone           = var.zone
-  network_id     = yandex_vpc_network.network-1.id
+  network_id     = yandex_vpc_network.net01.id
   v4_cidr_blocks = ["192.168.100.0/24"]
 }
 
