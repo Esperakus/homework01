@@ -41,7 +41,7 @@ resource "yandex_compute_instance" "nginx01" {
     type        = "ssh"
     user        = "web"
     private_key = file("~/.ssh/id_rsa")
-    host        = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
+    host        = yandex_compute_instance.nginx01.network_interface.0.nat_ip_address
   }
 
   provisioner "remote-exec" {
@@ -66,9 +66,9 @@ resource "yandex_vpc_subnet" "subnet-1" {
 }
 
 output "internal_ip_address_vm_1" {
-  value = yandex_compute_instance.vm-1.network_interface.0.ip_address
+  value = yandex_compute_instance.nginx01.network_interface.0.ip_address
 }
 
 output "external_ip_address_vm_1" {
-  value = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
+  value = yandex_compute_instance.nginx01.network_interface.0.nat_ip_address
 }
