@@ -13,7 +13,8 @@ variable "folder_id" {
 
 variable "image_id" {
   type    = string
-  default = "fd8kdq6d0p8sij7h5qe3"
+#  default = "fd8kdq6d0p8sij7h5qe3"
+  default = "fd8ibluloco5r4ku4bgg"
 }
 
 variable "yc_token" {

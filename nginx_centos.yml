@@ -1,0 +1,35 @@
+---
+- name: Install nginx
+  hosts: all
+  become: true
+  tasks:
+  - name: Update all packages
+    dnf:
+      name: "*"
+      state: latest
+      update_cache: yes
+
+  - name: install python-firewalld
+    dnf:
+      name: python3-firewall
+      state: present
+
+  - name: Install nginx
+    dnf:
+      name: nginx
+      state: latest
+
+  - name: Enable nginx
+    systemd:
+      name: nginx
+      state: restarted
+      enabled: yes
+
+  - name: enable http(s) in firewalld
+    firewalld:
+      service:
+        - http
+        - https
+      permanent: yes
+      state: enabled
+      immediate: yes

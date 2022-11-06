@@ -39,7 +39,7 @@ resource "yandex_compute_instance" "nginx01" {
 
   connection {
     type        = "ssh"
-    user        = "ubuntu"
+    user        = "web"
     private_key = file("~/.ssh/id_rsa")
     host        = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
   }
@@ -50,7 +50,7 @@ resource "yandex_compute_instance" "nginx01" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook -u ubuntu -i '${self.network_interface.0.nat_ip_address},' --private-key ~/.ssh/id_rsa provision.yml"
+    command = "ansible-playbook -u web -i '${self.network_interface.0.nat_ip_address},' --private-key ~/.ssh/id_rsa nginx_centos.yml"
   }
 }
 
