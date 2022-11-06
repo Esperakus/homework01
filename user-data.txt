@@ -3,4 +3,4 @@ users:
     groups: wheel
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
-    ssh_authorized_keys: "${file("~/.ssh/id_rsa.pub")}"
+    ssh_authorized_keys: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCq026e4nl8BW5RpKe00NEXeZDkvXmr5jS8k5Mc+S+7wJRPMQ5sJFfFADeLP9z1lD6B4+eGDN4zDcvv3+HDFmDBZgNKDRnSHxe1TU6/uMZHrIMTTo25+mW4W33M9CtlZysEeEGaJ8ji4hURwX8pbge2F1GwZmN+Cf6ycm3Ar+8hLZB/iMH+SoLcUOHkqsbGoqz+ftfxWOYhtcZDVx5thg8DTUHcODKnd36OnBZYZ7hdxKGxbZRUh8Wv2rgu6O3CCZW33wkmNWPaBxOniPSLdfQp5srwK8LOhlR1BkhlNuwmdq52VRJ6d2JmQa9unJnhIuknncnYR4aIalgXBESlZb5kb7As/rmDuZgUOw6VJ8gF+FUoleCtNSpgDLVE2Rn2tPaZ4EkSjQ5B1ofJWe2K7y6TYRaoEjY2uDU/xDkTO+Q6KhllgIhAf0EDV4539Tn1Rsv37UFg7XnyHqwJq5DOeKetHYK5nkSNA0XSrNfm//jM204LxpcSdcRhh9KXStSNEWE= esper@fedora"
