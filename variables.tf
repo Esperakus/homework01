@@ -4,11 +4,11 @@ variable "zone" {
 }
 
 variable "cloud_id" {
-  type    = string
+  type = string
 }
 
 variable "folder_id" {
-  type    = string
+  type = string
 }
 
 variable "image_id" {
@@ -17,5 +17,5 @@ variable "image_id" {
 }
 
 variable "yc_token" {
-  type    = string
+  type = string
 }

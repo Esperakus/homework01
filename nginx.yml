@@ -3,14 +3,19 @@
   hosts: all
   become: true
   tasks:
+
+  - name: set timezone msk
+    timezone:
+      name: Europe/Moscow
+
   - name: Update all packages
-    apt:
+    dnf:
       name: "*"
       state: latest
       update_cache: yes
 
   - name: Install nginx
-    apt:
+    dnf:
       name: nginx
       state: latest
 
